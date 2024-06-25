@@ -41,7 +41,7 @@ if(isset($_POST['signin'])){
      session_start();
      $row=$result->fetch_assoc();
      $_SESSION['email']=$row['email'];
-     header("Location: homepage1.php");
+     header("Location: homepage.php");
      exit();
     }
     else{

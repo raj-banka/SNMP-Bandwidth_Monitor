@@ -16,7 +16,7 @@ include ("login_backend.php");
   </head>
   <body>
     <div class="container">
-      <div><img class="logo" id="logo1" src="logostpi.jpg" alt="logo"></div>
+      <div><img class="logo" id="logo1" src="image.png" alt="logo"></div>
       <!-- <div><img class="logo" id="logo2" src="logostpi.jpg" alt="logo"></div> -->
     
       <div class="forms-container">

@@ -20,7 +20,7 @@
 
 <body>
     <header class="top">
-        <div class="left_header"><img id="Logo" src="logostpi.jpg" alt="logo"></div>
+        <div class="left_header"><img id="Logo" src="image.png" alt="logo"></div>
         <div class="right_header">
             <h1 id="heading">Monitoring Dashboard</h1>
         </div>
