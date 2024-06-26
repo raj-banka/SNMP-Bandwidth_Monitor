@@ -4,47 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Display Switch Details</title>
-    <style>
-        * {
-            background-color: lightblue;
-        }
+    <link rel="stylesheet" href="interface.css"> 
 
-        .interface-link {
-            border: 2px solid black;
-            background-color: blue;
-            border-radius: 30px;
-            margin-left: 100px;
-            color: white;
-            font-weight: 700;
-            text-decoration: none;
-            cursor: pointer;
-            padding: 5px;
-        }
-        h2{
-            color: black;
-            background-color: white;
-            /* margin-left: 550px; */
-            width: 50%;
-            padding-left: 30px;
-
-            text-decoration: underline;
-            font-weight: 200;
-        }
-        h3{
-                color: white;
-                border: 2px solid black;
-                border-radius: 30px;
-                background-color: black;
-                width: 40%;
-                /* display: inline; */
-
-        }
-    </style>
 </head>
 
 <body>
-    <h1 style="margin-left:550px">Interface Details:</h1>
+    <div class="Section_top">
+    <h1 style="margin-left:-800px; color: red; background-color:yellow; display:inline;padding:5px;">Interface Details:</h1>
     <div id="details"> </div>
+    <div class="content">
+           <!-- /<h1><span>INTERFACE DETAILS:</span></h1> -->
+            <!-- <a href="#">Welcome</a> -->
+        </div>
+    
     <script>
         // Retrieve the device IP and community string from sessionStorage
         const device_ip = sessionStorage.getItem('device_ip');
@@ -101,6 +73,7 @@
 
 
     </script>
+    </div>
 </body>
 
 </html>

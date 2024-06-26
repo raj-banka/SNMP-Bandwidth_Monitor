@@ -1,0 +1,103 @@
+body,html{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    font-family: sans-serif;
+}
+.Section_top{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    background-image: url(Jaipur5.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    justify-content: center;
+    animation: change 30s infinite ease-in-out;
+}
+.content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-transform: uppercase;
+
+}
+.interface-link {
+    border: 2px solid black;
+    background-color: blue;
+    border-radius: 30px;
+    margin-left: 100px;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 5px;
+}
+h2{
+    color: black;
+    background-color: white;
+    /* margin-left: 550px; */
+    width: 50%;
+    padding-left: 30px;
+
+    text-decoration: underline;
+    font-weight: 200;
+}
+h3{
+        color: white;
+        border: 2px solid black;
+        border-radius: 30px;
+        background-color: black;
+        width: 40%;
+        /* display: inline; */
+
+}
+.content h1{
+    color: #fff;
+    font-size: 60px;
+    letter-spacing: 15px;
+}
+.content h1 span{
+    color: #111;
+}
+/* #details{
+    background: #85c1ee;
+    padding: 10px 24px;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 20px;
+} */
+.content a:hover{
+    background: #4481eb;
+    color: #fff;
+}
+@keyframes change{
+    0%
+    {
+        background-image: url(Jaipur1.jpg);
+    }
+    20%
+    {
+        background-image: url(Jaipur2.jpg);
+    }
+    40%
+    {
+        background-image: url(Jaipur3.jpg);
+    }
+    60%
+    {
+        background-image: url(Jaipur4.jpg);
+    }
+    80%
+    {
+        background-image: url(Jaipur5.jpg);
+    }
+    100%
+    {
+        background-image: url(Jaipur1.jpg);
+    }
+}
