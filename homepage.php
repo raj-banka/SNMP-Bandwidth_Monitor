@@ -8,12 +8,7 @@
     <title>Admin Page</title>
     <script>
         function fetchSwitchDetails(host, community) {
-            // Store the host in sessionStorage
-            sessionStorage.setItem('device_ip', host);
-            sessionStorage.setItem('community', community);
-
-            // Redirect to the display page
-            window.location.href = 'dispaly_switch_detail.php';
+            window.location.href = `dispaly_switch_detail.php?device_ip=${encodeURIComponent(host)}&community=${encodeURIComponent(community)}`;
         }
     </script>
 </head>
