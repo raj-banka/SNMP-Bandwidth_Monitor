@@ -9,6 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@1.0.0"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         * {
             background-color: blue;
@@ -33,15 +34,38 @@
             font-weight: 600;
             justify-content: space-around;
         }
+        #download-screenshot{
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-left: 86%;
+        }
+        #download-screenshot:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 
 <body>
 
 <!-- <h2 id="deviceName" class="info"></h2> -->
-<p id="interfaceDetails" class="info"></p>
+<button id="download-screenshot">Download Screenshot</button>
+<div id="content">
+ <p id="interfaceDetails" class="info"></p>
     <!-- <h2 style="margin-left:50px;" id="interfaceAlias">Loading...</h2> -->
     <canvas id="bandwidthChart"></canvas>
+    <script>
+        document.getElementById('download-screenshot').addEventListener('click', function () {
+            html2canvas(document.querySelector('#content')).then(function (canvas) {
+                let link = document.createElement('a');
+                link.download = 'screenshot.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        });
+    </script>
 
     <script>
         var ctx = document.getElementById('bandwidthChart').getContext('2d');
@@ -140,6 +164,7 @@
 
         setInterval(fetchRealTimeData, 10000); // 1 minutes in milliseconds
     </script>
+</div>
 </body>
 
 </html>
