@@ -11,11 +11,12 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@1.0.0"></script>
     <style>
         * {
-            background-color: blue;
+            background-image:url(grid2.jfif);
         }
 
         canvas {
-            background-color: aqua;
+            background-color: white;
+            /* color:black; */
             margin-left: 150px;
             margin-top: 40px;
             margin-bottom: 150px;
@@ -23,7 +24,7 @@
         }
         p{
             background-color: red;
-            color: black;
+            color: white;
             margin-left: 380px;
             margin-bottom: -30px;
             width: 30%;
@@ -33,10 +34,34 @@
             font-weight: 600;
             justify-content: space-around;
         }
+        #download-screenshot{
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-left: 86%;
+        }
+        #download-screenshot:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 
 <body>
+<button id="download-screenshot">Download Screenshot</button>
+<div id="content">
+<script>
+        document.getElementById('download-screenshot').addEventListener('click', function () {
+            html2canvas(document.querySelector('#content')).then(function (canvas) {
+                let link = document.createElement('a');
+                link.download = 'screenshot.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        });
+    </script>
+
 
 <!-- <h2 id="deviceName" class="info"></h2> -->
 <p id="interfaceDetails" class="info"></p>
@@ -140,6 +165,7 @@
 
         setInterval(fetchRealTimeData, 10000); // 1 minutes in milliseconds
     </script>
+ </div>
 </body>
 
 </html>
