@@ -8,7 +8,7 @@
     <title>Admin Page</title>
     <script>
         function fetchSwitchDetails(host, community) {
-            window.location.href = `dispaly_switch_detail.php?device_ip=${encodeURIComponent(host)}&community=${encodeURIComponent(community)}`;
+            window.location.href = `display_switch_detail.php?device_ip=${encodeURIComponent(host)}&community=${encodeURIComponent(community)}`;
         }
     </script>
 </head>
