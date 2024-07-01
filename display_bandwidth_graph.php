@@ -213,6 +213,7 @@
         fetchHistoricalData();
         setInterval(fetchRealTimeData,10000); // 10 sec in milliseconds
     </script>
+</div>
 </body>
 
 </html>
