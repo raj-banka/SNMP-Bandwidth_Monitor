@@ -12,11 +12,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         * {
-            background-image:url(grid2.jfif);
+            background-color: lightblue;
         }
 
         canvas {
-            background-color: white;
+            background-color: wheat;
             /* color:black; */
             margin-left: 150px;
             margin-top: 40px;
@@ -24,8 +24,8 @@
             margin-right: 150px;
         }
         p{
-            background-color: red;
-            color: white;
+            background-color: white;
+            color: black;
             margin-left: 380px;
             margin-bottom: -30px;
             width: 30%;
@@ -46,27 +46,49 @@
         #download-screenshot:hover {
             background-color: #45a049;
         }
+
+        #loading {
+            display: none; /* Initially hide loading spinner */
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: black;
+            background-color: wheat;
+        }
+
+        #loading-spinner {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #3498db;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 2s linear infinite;
+            margin-bottom: 20px;
+            background-color: wheat;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }}
+    
     </style>
 </head>
 
 <body>
-<button id="download-screenshot">Download Screenshot</button>
-<div id="content">
-<script>
-        document.getElementById('download-screenshot').addEventListener('click', function () {
-            html2canvas(document.querySelector('#content')).then(function (canvas) {
-                let link = document.createElement('a');
-                link.download = 'screenshot.png';
-                link.href = canvas.toDataURL('image/png');
-                link.click();
-            });
-        });
-    </script>
-
-
 <!-- <h2 id="deviceName" class="info"></h2> -->
 <button id="download-screenshot">Download Screenshot</button>
 <div id="content">
+        <div id="loading">
+            loading...
+            <div id="loading-spinner"></div>
+</div>
  <p id="interfaceDetails" class="info"></p>
     <!-- <h2 style="margin-left:50px;" id="interfaceAlias">Loading...</h2> -->
     <canvas id="bandwidthChart"></canvas>
@@ -127,11 +149,15 @@
 
 
         const deviceIp = sessionStorage.getItem('device_ip');
+        // prompt(deviceIp);
         const community = sessionStorage.getItem('community');
+        // prompt("com"+community);
         const ifIndex = sessionStorage.getItem('ifIndex');
+        // prompt(ifIndex);
        
 
         function fetchHistoricalData() {
+            showLoading();
             var apiUrl = `fetch_bandwidth_detail.php?historical=1&ifIndex=${ifIndex}&community=${community}&device_ip=${deviceIp}`;
             fetch(apiUrl)
                 .then(response => response.json())
@@ -156,6 +182,7 @@
                 .then(data => {
                     // document.getElementById('deviceName').innerHTML = `Name: ${data.alias}`;
                     document.getElementById('interfaceDetails').innerHTML = `${data.alias} : (${data.port})`;
+                     hideLoading();
                     var now = new Date(data.timestamp * 1000);
                     bandwidthChart.data.labels.push(now);
                     bandwidthChart.data.datasets[0].data.push(data.inBandwidth);
@@ -173,10 +200,18 @@
                 })
                 .catch(error => console.error('Error fetching real-time data:', error));
         }
+    
+
+        function showLoading() {
+            document.getElementById('loading').style.display = 'block';
+        }
+
+        function hideLoading() {
+            document.getElementById('loading').style.display = 'none';
+        }
 
         fetchHistoricalData();
-
-        setInterval(fetchRealTimeData, 10000); // 1 minutes in milliseconds
+        setInterval(fetchRealTimeData,10000); // 10 sec in milliseconds
     </script>
 </body>
 

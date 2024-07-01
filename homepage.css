@@ -108,13 +108,7 @@ ul {
     background-color: black;
 
 }
-body,html{
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100vh;
-    font-family: sans-serif;
-}
+
 .Section_top{
     width: 100%;
     height: 100%;
@@ -128,7 +122,7 @@ body,html{
     justify-content: center;
     animation: change 30s infinite ease-in-out;
 }
-.content{
+/* .content{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -153,7 +147,7 @@ h3{
         border-radius: 30px;
         background-color: black;
         width: 40%;
-        /* display: inline; */
+        display: inline;
 
 }
 .content h1{
@@ -163,7 +157,7 @@ h3{
 }
 .content h1 span{
     color: #111;
-}
+} */
 /* #details{
     background: #85c1ee;
     padding: 10px 24px;

@@ -1,16 +1,9 @@
 <?php
-header('Content-Type: application/json');
-$community = 'Stpi@123';
-// $device_ip = (isset($_GET['device_ip']) ? $_GET['device_ip']:'');
-$device_ip = '203.129.217.70';
-// $cache_file = "/tmp/snmp_cache_{$device_ip}.json";
-// $cache_time = 60; // Cache for 60 seconds
-// $device_ip = '203.129.217.66';
-// var_dump($device_ip);
-// if (file_exists($cache_file) && (time() - filemtime($cache_file) < $cache_time)) {
-//     echo file_get_contents($cache_file);
-//     exit;
-// }
+session_Start();
+// header('Content-Type: text/html; charset=utf-8');
+$flag = 0;
+$device_ip = (isset($_GET['device_ip']) ? $_GET['device_ip']:'');
+$community = (isset($_GET['community']) ? $_GET['community']:'');
 
 $oid_ifDescr = '1.3.6.1.2.1.2.2.1.2';
 $oid_ifAlias = '1.3.6.1.2.1.31.1.1.1.18';
@@ -23,7 +16,9 @@ $ifIndices  =  @snmpwalk($device_ip, $community, $oid_ifIndex);
 $deviceName =  @snmpget($device_ip, $community, $oid_sys_name);
 
 if ($ifDescrs === false || $ifAliases === false || $ifIndices === false || $deviceName === false) {
-    echo json_encode(["error" => "Failed to fetch SNMP data."]);
+     $_SESSION['message'] = "Failed to Fetch SNMP Data.";
+        $_SESSION['message_type'] = "error";
+        header("Location: front_page.php"); 
     exit; // Terminate script execution
 }
 
@@ -42,9 +37,6 @@ function clean_port($value){
     return trim(str_replace('ge-0/0/','',$value));
 }
 
-// function clean_port($port) {
-//     return trim($port, 'ge-0/0/');
-// }
 
 $interfaces = [];
 $deviceName = clean_snmp_value($deviceName);
@@ -69,10 +61,10 @@ foreach ($ifDescrs as $index => $ifDescr) {
 }
 
 
-echo json_encode([
-    'device_name' => $deviceName,
-    'interfaces' => $interfaces
-]);
+// echo json_encode([
+//     'device_name' => $deviceName,
+//     'interfaces' => $interfaces
+// ]);
 // Example: Save to database if not already exists (replace with your database connection and query)
 try {
     // Replace with your database connection details
@@ -80,19 +72,22 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Check if data already exists
-    $stmt_check = $pdo->prepare("SELECT COUNT(*) FROM switch_details WHERE device_ip = :device_ip AND community = :community AND ifIndex = :ifIndex");
-    $stmt_check->execute([
-        'device_ip' => $device_ip,
-        'community' => $community,
-        'ifIndex' => $ifIndexClean
-    ]);
+    foreach ($interfaces as $interface) {
+        // echo "Checking interface: " . json_encode($interface) . "\n";
+        $stmt_check = $pdo->prepare("SELECT COUNT(*) FROM switch_details WHERE device_ip = :device_ip AND community = :community AND ifIndex = :ifIndex");
+        $stmt_check->execute([
+            'device_ip' => $interface['device_ip'],
+            'community' => $interface['community'],
+            'ifIndex' => $interface['ifIndex']
+        ]);
+    
     $exists = $stmt_check->fetchColumn();
 
     if (!$exists) {
         // Prepare statement to insert data
         $stmt = $pdo->prepare("INSERT INTO switch_details (device_ip, ifIndex, ifDescr, ifAlias, community) VALUES (:device_ip, :ifIndex, :ifDescr, :ifAlias, :community)");
 
-        foreach ($interfaces as $interface) {
+        // foreach ($interfaces as $interface) {
             $stmt->execute([
                 'device_ip' => $interface['device_ip'],
                 'ifIndex' => $interface['ifIndex'],
@@ -100,12 +95,27 @@ try {
                 'ifAlias' => $interface['ifAlias'],
                 'community' => $interface['community']
             ]);
-        }
+        
+        // echo "Inserted interface: " . json_encode($interface) . "\n"
+        $flag = 1;
+    }}
+    if ($flag === 1) {
+        $_SESSION['message'] = "Detail inserted successfully!!";
+        $_SESSION['message_type'] = "success";
+    } else {
+        $_SESSION['message'] = "No data inserted";
+        $_SESSION['message_type'] = "error";
     }
+
+    header("Location: front_page.php"); // Redirect back to front_page.php
+
 } catch (PDOException $e) {
-    echo json_encode(["error" => "Database error: " . $e->getMessage()]);
+    $_SESSION['message'] = "Database error: " . $e->getMessage();
+    $_SESSION['message_type'] = "error";
+    header("Location: front_page.php"); // Redirect back to front_page.php
     exit;
 }
+
 
 // Respond with JSON data
 // echo json_encode([

@@ -1,0 +1,21 @@
+Array
+(
+    [type] => 2
+    [message] => snmpget(): No response from 203.129.217.67
+    [file] => C:\xamppp\htdocs\SNMP-Switch_Monitor\fetch_switch_detail.php
+    [line] => 21
+)
+Array
+(
+    [type] => 2
+    [message] => snmpget(): No response from 203.129.217.67
+    [file] => C:\xamppp\htdocs\SNMP-Switch_Monitor\fetch_switch_detail.php
+    [line] => 21
+)
+Array
+(
+    [type] => 2
+    [message] => snmpget(): No response from 203.129.217.70
+    [file] => C:\xamppp\htdocs\SNMP-Switch_Monitor\fetch_switch_detail.php
+    [line] => 21
+)

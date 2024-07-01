@@ -36,7 +36,7 @@ function getBandwidthUsage($community, $switch_ip, $interface)
     $out1 = intval($out1);
     // $alias = preg_replace('/^.*: /', '', $alias);
 
-    sleep(60);
+    sleep(10);
 
     $in2 = snmp2_get($switch_ip, $community, $oidIn);
     $out2 = snmp2_get($switch_ip, $community, $oidOut);
@@ -50,8 +50,8 @@ function getBandwidthUsage($community, $switch_ip, $interface)
     $in = abs($in2 - $in1);
     $out = abs($out2 - $out1);
 
-    $inBandwidth = ($in * 8) / (60 * 1000000); // Mbps
-    $outBandwidth = ($out * 8) / (60 * 1000000); // Mbps
+    $inBandwidth = ($in * 8) / (10 * 1000000); // Mbps
+    $outBandwidth = ($out * 8) / (10 * 1000000); // Mbps
     $totalBandwidth = $inBandwidth + $outBandwidth;
 
     return [
@@ -77,15 +77,15 @@ function fetchHistoricalData($community, $switch_ip, $interface, $interval, $poi
     return $data;
 }
 
-$community = 'Stpi@123';
 
 if (isset($_GET['ifIndex']) && isset($_GET['community']) && isset($_GET['device_ip'])) {
     $ifIndex = $_GET['ifIndex'];
     $switch_ip = $_GET['device_ip'];
+    $community = $_GET['community'];
 
     if (isset($_GET['historical'])) {
         header('Content-Type: application/json');
-        $historicalData = fetchHistoricalData($community, $switch_ip, $ifIndex, 60, 12);
+        $historicalData = fetchHistoricalData($community, $switch_ip, $ifIndex, 10, 72);
         echo json_encode($historicalData);
         exit;
     } elseif (isset($_GET['api'])) {

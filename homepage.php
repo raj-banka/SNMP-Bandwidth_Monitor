@@ -8,7 +8,7 @@
     <title>Admin Page</title>
     <script>
         function fetchSwitchDetails(host, community) {
-            window.location.href = `dispaly_switch_detail.php?device_ip=${encodeURIComponent(host)}&community=${encodeURIComponent(community)}`;
+            window.location.href = `display_switch_detail.php?device_ip=${encodeURIComponent(host)}&community=${encodeURIComponent(community)}`;
         }
     </script>
 </head>
@@ -29,6 +29,7 @@
                 <li id="switch1" class="switch"><span class="switch_span"><a class="ank" href="#" onclick="fetchSwitchDetails('203.129.217.66','Stpi@123')">New NOC</a></span></li>
                 <li id="switch2" class="switch"><span class="switch_span"><a class="ank" href="#" onclick="fetchSwitchDetails('203.129.217.67','Stpi@123')">Old NOC</a></span></li>
                 <li id="switch3" class="switch"><span class="switch_span"><a class="ank" href="#" onclick="fetchSwitchDetails('203.129.217.70','Stpi@123')">New Build.</a></span></li>
+                <li id ="add-interface" class="switch"><span class="switch_span"><a class="ank" href="Front_page.php">Add Interface </a></span></li>
             </ul>
         </div>
     </div>

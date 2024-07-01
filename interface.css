@@ -1,8 +1,8 @@
 body,html{
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100vh;
+    /* width: 100%; */
+    /* height: 100%; */
     font-family: sans-serif;
 }
 .Section_top{
@@ -17,14 +17,6 @@ body,html{
     text-align: center;
     justify-content: center;
     animation: change 30s infinite ease-in-out;
-}
-.content{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-transform: uppercase;
-
 }
 .interface-link {
     border: 2px solid black;
@@ -52,18 +44,16 @@ h3{
         border: 2px solid black;
         border-radius: 30px;
         background-color: black;
-        width: 40%;
+        width: 30%;
         /* display: inline; */
 
 }
 .content h1{
     color: #fff;
-    font-size: 60px;
-    letter-spacing: 15px;
+    /* font-size: 60px; */
+    /* letter-spacing: 15px; */
 }
-.content h1 span{
-    color: #111;
-}
+
 /* #details{
     background: #85c1ee;
     padding: 10px 24px;
