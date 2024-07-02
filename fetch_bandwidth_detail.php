@@ -67,28 +67,14 @@ function getBandwidthUsage($community, $switch_ip, $interface)
     ];
 }
 
-function fetchHistoricalData($community, $switch_ip, $interface, $interval, $points)
-{
-    $data = [];
-    for ($i = 0; $i < $points; $i++) {
-        $data[] = getBandwidthUsage($community, $switch_ip, $interface);
-        // sleep($interval);
-    }
-    return $data;
-}
 
 
 if (isset($_GET['ifIndex']) && isset($_GET['community']) && isset($_GET['device_ip'])) {
     $ifIndex = $_GET['ifIndex'];
     $switch_ip = $_GET['device_ip'];
-    $community = $_GET['community'];
+    $community = $_GET['community']; 
 
-    if (isset($_GET['historical'])) {
-        header('Content-Type: application/json');
-        $historicalData = fetchHistoricalData($community, $switch_ip, $ifIndex, 10, 72);
-        echo json_encode($historicalData);
-        exit;
-    } elseif (isset($_GET['api'])) {
+    if (isset($_GET['api'])) {
         header('Content-Type: application/json');
         $bandwidth = getBandwidthUsage($community, $switch_ip, $ifIndex);
         echo json_encode($bandwidth);
