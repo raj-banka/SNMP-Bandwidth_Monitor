@@ -4,23 +4,20 @@
     box-sizing: border-box;
 }
 
-body {
-     /* background-image: url(foundationday.jpg);  */
-     background-repeat: no-repeat;
-    background-size: cover;
-    z-index: -1;
-    /* background-color: white; */
-}
-#details{
+.Section_top {
     width: 100%;
-    height: 400px;
-    color:rgb(248, 127, 127);
-    background-color: black;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    background-image: url(foundationday.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    justify-content: center;
+    animation: change 30s infinite ease-in-out;
 }
 
-p strong{
-    color: yellow;
-}
 .top {
     display: flex;
     height: 100px;
@@ -71,7 +68,6 @@ img {
     color: black;
     font-size: 32px;
     font-weight: 800;
-    /* margin-left: 80px; */
 }
 
 
@@ -88,9 +84,11 @@ img {
 ul {
     list-style: none;
 }
-.ank{
+
+.ank {
     text-decoration: none;
 }
+
 .switch_span {
     border: 2px solid black;
     padding: 10px;
@@ -109,109 +107,50 @@ ul {
 
 }
 
-.Section_top{
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    position: relative;
-    background-image: url(foundationday.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    text-align: center;
-    justify-content: center;
-    animation: change 30s infinite ease-in-out;
-}
-/* .content{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-transform: uppercase;
+/* adding animation */
 
-}
-.interface-link {
-    border: 2px solid black;
-    background-color: blue;
-    border-radius: 30px;
-    margin-left: 100px;
-    color: white;
-    font-weight: 700;
-    text-decoration: none;
-    cursor: pointer;
-    padding: 5px;
-}
-h3{
-        color: white;
-        border: 2px solid black;
-        border-radius: 30px;
-        background-color: black;
-        width: 40%;
-        display: inline;
-
-}
-.content h1{
-    color: #fff;
-    font-size: 60px;
-    letter-spacing: 15px;
-}
-.content h1 span{
-    color: #111;
-} */
-/* #details{
-    background: #85c1ee;
-    padding: 10px 24px;
-    text-decoration: none;
-    font-size: 18px;
-    border-radius: 20px;
-} */
-.content a:hover{
-    background: #4481eb;
-    color: #fff;
-}
-@keyframes change{
-    0%
-    {
+@keyframes change {
+    0% {
         background-image: url(found2.jpg);
     }
-    20%
-    {
+
+    20% {
         background-image: url(found3.jpg);
     }
-    40%
-    {
+
+    40% {
         background-image: url(found4.jpg);
     }
-    60%
-    {
+
+    60% {
         background-image: url(found5.jpg);
     }
-    80%
-    {
+
+    80% {
         background-image: url(found6.jpg);
     }
-    100%
-    {
+
+    100% {
         background-image: url(found7.jpg);
     }
-    20%
-    {
+
+    20% {
         background-image: url(found5.jpg);
     }
-    40%
-    {
+
+    40% {
         background-image: url(found9.jpg);
     }
-    60%
-    {
+
+    60% {
         background-image: url(found10.jpg);
     }
-    80%
-    {
+
+    80% {
         background-image: url(found11.jpg);
     }
-    100%
-    {
+
+    100% {
         background-image: url(found12.jpg);
     }
 
