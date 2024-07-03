@@ -82,7 +82,8 @@ INSTALLATION INSTRUCTIONS:
      4) login_backend.php: This PHP script serves as the backend handler for processing Login requests from the frontend (e.g., login page JavaScript) and 
                            it verifies user credentials, performs authentication against a database or external service, and manages user sessions upon successful login.
      5) homepage.php: This PHP script serves the MONITORING DASHBOARD comprising the 3 Swicthes i.e NEW Building , OLD Noc & NEW Noc .
-     6) interface.css: Includes CSS file containing styles for the homepage.php file.
+     6) homepage1.css: Includes CSS file containing styles for homepage.php for Monitoring Dashboard.
+     6) interface.css: Includes CSS file containing styles for the INTERFACE DETAILS of each switches.
      7) Front_page.php: This PHP script serves the purpose of adding new network interfaces or devices to your monitoring system and 
                         it provides a form or interface for users to input details about the device or interface, which is then stored in a database or used to configure SNMP monitoring.
      8) display_switch_detail.php: This PHP script is responsible for displaying detailed information about network switches or devices within your monitoring system .
@@ -98,7 +99,7 @@ INSTALLATION INSTRUCTIONS:
     13) snmperror.log: The snmperror.log file is a dedicated log file for recording SNMP-related errors encountered by the SNMP Bandwidth Monitoring Tool. 
                        This log file helps in troubleshooting and diagnosing issues related to SNMP operations within the tool.
      
-   **Consists various Images of STPI** :
+  **Images directory** :Consists various Images of STPI
     jaipur1,jaipur2,jaipur3,jaipur4,jaipur5,foundation,found2,found3,found4,found5,found6,found7,found8,found9,found10,found11,found12,found13,undraw_laravel and undraw_maker.
 
 
