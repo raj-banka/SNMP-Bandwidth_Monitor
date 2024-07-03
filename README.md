@@ -83,20 +83,20 @@ INSTALLATION INSTRUCTIONS:
                            it verifies user credentials, performs authentication against a database or external service, and manages user sessions upon successful login.
      5) homepage.php: This PHP script serves the MONITORING DASHBOARD comprising the 3 Swicthes i.e NEW Building , OLD Noc & NEW Noc .
      6) homepage1.css: Includes CSS file containing styles for homepage.php for Monitoring Dashboard.
-     6) interface.css: Includes CSS file containing styles for the INTERFACE DETAILS of each switches.
-     7) Front_page.php: This PHP script serves the purpose of adding new network interfaces or devices to your monitoring system and 
+     7) interface.css: Includes CSS file containing styles for the INTERFACE DETAILS of each switches.
+     8) Front_page.php: This PHP script serves the purpose of adding new network interfaces or devices to your monitoring system and 
                         it provides a form or interface for users to input details about the device or interface, which is then stored in a database or used to configure SNMP monitoring.
-     8) display_switch_detail.php: This PHP script is responsible for displaying detailed information about network switches or devices within your monitoring system .
+     9) display_switch_detail.php: This PHP script is responsible for displaying detailed information about network switches or devices within your monitoring system .
                                    It retrieves and presents specific details such as switch name, IP address, interface statuses, and possibly performance metrics.
-     9) fetch_switch_detail.php: This PHP script is responsible for fetching details about network switches or devices from SNMP-enabled devices and 
+     10) fetch_switch_detail.php: This PHP script is responsible for fetching details about network switches or devices from SNMP-enabled devices and 
                                  it typically interacts with SNMP agents(OIDS) on switches to retrieve specific information such as interface statuses, traffic statistics, and device configuration.
-    10) display_bandwidth_graph.php: Fetches bandwidth data from network devices using SNMP, allowing for real-time monitoring and
+    11) display_bandwidth_graph.php: Fetches bandwidth data from network devices using SNMP, allowing for real-time monitoring and
                                      Generates clear and intuitive graphs that illustrate bandwidth usage trends over customizable time intervals.
-    11) fetch_bandwidth_detail.php: Communicates with SNMP-enabled devices to gather bandwidth usage data and Processes the raw SNMP data into a structured format suitable for graphing and analysis. 
+    12) fetch_bandwidth_detail.php: Communicates with SNMP-enabled devices to gather bandwidth usage data and Processes the raw SNMP data into a structured format suitable for graphing and analysis. 
                                     It  is he processed data is output in a format that can be easily consumed by other scripts or components, such as JSON .
-    12) connect.php: The connect.php script is a foundational component of our SNMP Bandwidth Monitoring Tool. This PHP file is responsible for establishing connections to SNMP-enabled network devices.
+    13) connect.php: The connect.php script is a foundational component of our SNMP Bandwidth Monitoring Tool. This PHP file is responsible for establishing connections to SNMP-enabled network devices.
                      It handles the initialization of SNMP sessions and provides utility functions for querying the devices.
-    13) snmperror.log: The snmperror.log file is a dedicated log file for recording SNMP-related errors encountered by the SNMP Bandwidth Monitoring Tool. 
+    14) snmperror.log: The snmperror.log file is a dedicated log file for recording SNMP-related errors encountered by the SNMP Bandwidth Monitoring Tool. 
                        This log file helps in troubleshooting and diagnosing issues related to SNMP operations within the tool.
      
   **Images directory** :Consists various Images of STPI
